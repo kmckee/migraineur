@@ -6,10 +6,12 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var babel = require('gulp-babel');
 
 var paths = {
   sass: ['./src/scss/**/*.scss'],
-  js: ['./src/**/*.js'],
+  js: ['./src/js/**/*.js'],
+  thirdPartyJs: ['./src/lib/**/*.js'],
   static: ['./src/**/*.html', './src/**/*.css', './src/**/*.{png,jpg}', './src/**/*.ttf', './src/**/*.woff'],
   thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css'],
 };
@@ -19,6 +21,7 @@ gulp.task('default', ['build']);
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.js, ['js']);
+  gulp.watch(paths.thirdPartyJs, ['thirdPartyJs']);
   gulp.watch(paths.static, ['static']);
   gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
 });
@@ -27,7 +30,7 @@ gulp.task('clean', function() {
     console.log('for now, do rm -rf www');
 });
 
-gulp.task('build', ['sass', 'js', 'static', 'thirdPartyStatic']);
+gulp.task('build', ['sass', 'js', 'thirdPartyJs', 'static', 'thirdPartyStatic']);
 
 gulp.task('sass', function(done) {
   gulp.src('./src/scss/ionic.app.scss')
@@ -44,7 +47,16 @@ gulp.task('sass', function(done) {
 
 gulp.task('js', function(done) {
     gulp.src(paths.js)
-        .pipe(gulp.dest('./www/'))
+        .pipe(babel({
+            presets: ['es2015']  
+        }))
+        .pipe(gulp.dest('./www/js/'))
+        .on('end', done);
+});
+
+gulp.task('thirdPartyJs', function(done) {
+    gulp.src(paths.thirdPartyJs)
+        .pipe(gulp.dest('./www/lib/'))
         .on('end', done);
 });
 
