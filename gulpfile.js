@@ -8,13 +8,29 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./src/scss/**/*.scss'],
+  js: ['./src/**/*.js'],
+  static: ['./src/**/*.html', './src/**/*.css', './src/**/*.{png,jpg}', './src/**/*.ttf', './src/**/*.woff'],
+  thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css'],
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['build']);
+
+gulp.task('watch', function() {
+  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.js, ['js']);
+  gulp.watch(paths.static, ['static']);
+  gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
+});
+
+gulp.task('clean', function() {
+    console.log('for now, do rm -rf www');
+});
+
+gulp.task('build', ['sass', 'js', 'static', 'thirdPartyStatic']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  gulp.src('./src/scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
@@ -26,16 +42,25 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+gulp.task('js', function(done) {
+    gulp.src(paths.js)
+        .pipe(gulp.dest('./www/'))
+        .on('end', done);
 });
 
-gulp.task('install', ['git-check'], function() {
-  return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
+gulp.task('static', function(done) {
+    gulp.src(paths.static)
+        .pipe(gulp.dest('./www/'))
+        .on('end', done);
 });
+
+gulp.task('thirdPartyStatic', function(done) {
+    gulp.src(paths.thirdPartyStatic)
+        .pipe(gulp.dest('./www/lib/'))
+        .on('end', done);
+});
+
+
 
 gulp.task('git-check', function(done) {
   if (!sh.which('git')) {
@@ -48,4 +73,11 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('install', ['git-check'], function() {
+  return bower.commands.install()
+    .on('log', function(data) {
+      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
+    });
 });
