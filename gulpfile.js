@@ -81,8 +81,6 @@ gulp.task('cukes', function(done) {
     });
 });
 
-
-
 gulp.task('git-check', function(done) {
     if (!sh.which('git')) {
         console.log(
