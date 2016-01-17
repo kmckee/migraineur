@@ -14,6 +14,9 @@ angular.module('starter.controllers', [])
     $scope.remove = function(symptom) {
         Symptoms.remove(symptom);
     };
+    $scope.add = function() {
+        alert('todo!');
+    }
 })
 
 .controller('SymptomDetailCtrl', function($scope, $stateParams, Symptoms) {
