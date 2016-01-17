@@ -1,16 +1,15 @@
 <ion-view view-title="Symptoms">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="symptom in symptoms" type="item-text-wrap" href="#/tab/symptoms/{{symptom.id}}">
-        <img ng-src="{{symptom.face}}">
-        <h2>{{symptom.name}}</h2>
-        <p>{{symptom.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(symptom)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="symptom in symptoms" type="item-text-wrap" href="#/tab/symptoms/{{symptom.id}}">
+                <div class="symptom-icon">{{ symptom.emoji }}</div>  
+                <h2>{{ symptom.overview }}</h2>
+                <p>{{ symptom.dateTime | date }}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-assertive" ng-click="remove(symptom)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
