@@ -1,5 +1,3 @@
-require 'json'
-
 FactoryGirl.define do
     factory :symptom do
         rating 3
