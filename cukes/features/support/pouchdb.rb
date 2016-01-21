@@ -13,14 +13,13 @@ module PouchDb
     end
     module Base
         def save!
-            # Convert me to json,
             db_name = PouchDb.db_name
             json = self.to_json
+            browser = PouchDb.browser
             insert_object_script = "(function() { " +
                                         "var db = new PouchDB('#{db_name}');" +
                                         "db.post(#{json});" +
                                     "})();"
-            browser = PouchDb.browser
             browser.execute_script(insert_object_script)
         end
 
