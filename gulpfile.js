@@ -46,14 +46,19 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
 gulp.task('js', function(done) {
+    var concat = require('gulp-concat');
+    var sourcemaps = require('gulp-sourcemaps');
+    var uglify = require('gulp-uglify');
+    var ngAnnotate = require('gulp-ng-annotate');
+
     gulp.src(paths.js)
     .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
         }))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
         .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./www/js/'))
