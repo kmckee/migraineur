@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings'])
+angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -17,11 +17,6 @@ angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
-    // Ionic uses AngularUI Router which uses the concept of states
-    // Learn more here: https://github.com/angular-ui/ui-router
-    // Set up the various states which the app can be in.
-    // Each state's controller can be found in controllers.js
     $stateProvider
 
     // setup an abstract state for the tabs directive
@@ -29,25 +24,6 @@ angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings'])
         url: '/tab',
         abstract: true,
         templateUrl: 'app/tabs.html'
-    })
-
-    .state('tab.facts', {
-        url: '/facts',
-        views: {
-            'tab-facts': {
-                templateUrl: 'app/facts/tab-facts.html',
-                controller: 'FactsCtrl'
-            }
-        }
-    })
-    .state('tab.fact-detail', {
-        url: '/facts/:factId',
-        views: {
-            'tab-facts': {
-                templateUrl: 'app/facts/fact-detail.html',
-                controller: 'FactDetailCtrl'
-            }
-        }
     })
 
     .state('tab.analysis', {
