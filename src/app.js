@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'pouchdb'])
+angular.module('starter', ['ionic', 'pouchdb', 'symptoms'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -29,26 +29,6 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/tab',
         abstract: true,
         templateUrl: 'app/tabs.html'
-    })
-
-    // Each tab has its own nav history stack:
-    .state('tab.symptoms', {
-        url: '/symptoms',
-        views: {
-            'tab-symptoms': {
-                templateUrl: 'app/symptoms/tab-symptoms.html',
-                controller: 'SymptomsCtrl'
-            }
-        }
-    })
-    .state('tab.symptom-detail', {
-        url: '/symptoms/:symptomId',
-        views: {
-            'tab-symptoms': {
-                templateUrl: 'app/symptoms/symptom-detail.html',
-                controller: 'SymptomDetailCtrl'
-            }
-        }
     })
 
     .state('tab.facts', {
