@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
     .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html'
+        templateUrl: 'app/tabs.html'
     })
 
     // Each tab has its own nav history stack:
@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/symptoms',
         views: {
             'tab-symptoms': {
-                templateUrl: 'templates/tab-symptoms.html',
+                templateUrl: 'app/symptoms/tab-symptoms.html',
                 controller: 'SymptomsCtrl'
             }
         }
@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/symptoms/:symptomId',
         views: {
             'tab-symptoms': {
-                templateUrl: 'templates/symptom-detail.html',
+                templateUrl: 'app/symptoms/symptom-detail.html',
                 controller: 'SymptomDetailCtrl'
             }
         }
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/facts',
         views: {
             'tab-facts': {
-                templateUrl: 'templates/tab-facts.html',
+                templateUrl: 'app/facts/tab-facts.html',
                 controller: 'FactsCtrl'
             }
         }
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/facts/:factId',
         views: {
             'tab-facts': {
-                templateUrl: 'templates/fact-detail.html',
+                templateUrl: 'app/facts/fact-detail.html',
                 controller: 'FactDetailCtrl'
             }
         }
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/analysis',
         views: {
             'tab-analysis': {
-                templateUrl: 'templates/tab-analysis.html',
+                templateUrl: 'app/analysis/tab-analysis.html',
                 controller: 'AnalysisCtrl'
             }
         }
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic', 'pouchdb'])
         url: '/settings',
         views: {
             'tab-settings': {
-                templateUrl: 'templates/tab-settings.html',
+                templateUrl: 'app/settings/tab-settings.html',
                 controller: 'SettingsCtrl'
             }
         }

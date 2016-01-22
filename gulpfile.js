@@ -10,19 +10,16 @@ var babel = require('gulp-babel');
 var exec = require('child_process').exec;
 
 var paths = {
-    sass: ['./src/scss/**/*.scss'],
-    js: ['./src/js/**/*.js'],
-    thirdPartyJs: ['./src/lib/**/*.js'],
+    sass: ['./src/**/*.scss'],
+    js: ['./src/**/*.js', '!./src/lib/**/*.js'],
     static: ['./src/**/*.html', './src/**/*.css', './src/**/*.{png,jpg}', './src/**/*.ttf', './src/**/*.woff'],
-    thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css'],
+    thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css']
 };
 
 gulp.task('default', ['build']);
 
 gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.js, ['js']);
-    gulp.watch(paths.thirdPartyJs, ['thirdPartyJs']);
     gulp.watch(paths.static, ['static']);
     gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
 });
@@ -31,7 +28,7 @@ gulp.task('clean', function() {
     console.log('for now, do rm -rf www');
 });
 
-gulp.task('build', ['sass', 'js', 'thirdPartyJs', 'static', 'thirdPartyStatic']);
+gulp.task('build', ['sass', 'js', 'static', 'thirdPartyStatic']);
 
 gulp.task('sass', function(done) {
     gulp.src('./src/scss/ionic.app.scss')
@@ -61,13 +58,7 @@ gulp.task('js', function(done) {
         .pipe(uglify())
         .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./www/js/'))
-    .on('end', done);
-});
-
-gulp.task('thirdPartyJs', function(done) {
-    gulp.src(paths.thirdPartyJs)
-    .pipe(gulp.dest('./www/lib/'))
+    .pipe(gulp.dest('./www/'))
     .on('end', done);
 });
 
