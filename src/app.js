@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts'])
+angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts', 'analysis'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -24,16 +24,6 @@ angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts'])
         url: '/tab',
         abstract: true,
         templateUrl: 'app/tabs.html'
-    })
-
-    .state('tab.analysis', {
-        url: '/analysis',
-        views: {
-            'tab-analysis': {
-                templateUrl: 'app/analysis/tab-analysis.html',
-                controller: 'AnalysisCtrl'
-            }
-        }
     });
 
     // if none of the above states are matched, use this as the fallback
