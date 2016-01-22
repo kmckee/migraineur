@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'pouchdb', 'symptoms'])
+angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -56,16 +56,6 @@ angular.module('starter', ['ionic', 'pouchdb', 'symptoms'])
             'tab-analysis': {
                 templateUrl: 'app/analysis/tab-analysis.html',
                 controller: 'AnalysisCtrl'
-            }
-        }
-    })
-
-    .state('tab.settings', {
-        url: '/settings',
-        views: {
-            'tab-settings': {
-                templateUrl: 'app/settings/tab-settings.html',
-                controller: 'SettingsCtrl'
             }
         }
     });
