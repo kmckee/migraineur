@@ -19,7 +19,6 @@ angular.module('starter')
     return Symptom;
 })
 
-
 .factory('symptomEmojiFor', function() {
     return function(rating) {
         return {

@@ -8,21 +8,32 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var babel = require('gulp-babel');
 var exec = require('child_process').exec;
+var mocha = require('gulp-mocha');
 
 var paths = {
     sass: ['./src/**/*.scss'],
     js: ['./src/**/*.js', '!./src/lib/**/*.js'],
+    tests: ['./src/**/*.spec.js'],
     static: ['./src/**/*.html', './src/**/*.css', './src/**/*.{png,jpg}', './src/**/*.ttf', './src/**/*.woff'],
     thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css']
 };
 
 gulp.task('default', ['build']);
 
+gulp.task('test', function() {
+    return gulp.src(paths.tests, {read: false})
+               .pipe(mocha({
+                   reporter: 'nyan',
+                   require: ['chai']
+               }));
+});
+
 gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.js, ['js']);
+    gulp.watch(paths.js, ['js', 'test']);
     gulp.watch(paths.static, ['static']);
     gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
+    gulp.watch(paths.tests, ['test']);
 });
 
 gulp.task('clean', function() {
@@ -52,12 +63,12 @@ gulp.task('js', function(done) {
 
     gulp.src(paths.js)
     .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(ngAnnotate())
-        .pipe(uglify())
-        .pipe(concat('all.js'))
+    .pipe(babel({
+        presets: ['es2015']
+    }))
+    .pipe(ngAnnotate())
+    .pipe(uglify())
+    .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./www/'))
     .on('end', done);
