@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.factory('Symptoms', function() {
+.factory('Symptoms', function(pouchDB) {
     var chats = [{
         id: 1,
         emoji: '😭',
