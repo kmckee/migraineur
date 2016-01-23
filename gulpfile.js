@@ -12,35 +12,52 @@ var mocha = require('gulp-mocha');
 
 var paths = {
     sass: ['./src/**/*.scss'],
-    js: ['./src/**/*.js', '!./src/lib/**/*.js'],
+    js: [
+        './src/**/*.js',
+        '!./src/**/*.spec.js'
+    ],
     tests: ['./src/**/*.spec.js'],
-    static: ['./src/**/*.html', './src/**/*.css', './src/**/*.{png,jpg}', './src/**/*.ttf', './src/**/*.woff'],
-    thirdPartyStatic: ['./src/lib/**/*.js', './src/lib/**/*.css']
+    static: [
+        './src/**/*.html',
+        './src/**/*.css',
+        './src/**/*.{png,jpg}',
+        './src/**/*.ttf',
+        './src/**/*.woff'
+    ],
+    thirdPartyStatic: [
+        './lib/**/*.js',
+        './lib/**/*.css'
+    ]
 };
 
 gulp.task('default', ['build']);
 
-gulp.task('test', function() {
-    return gulp.src(paths.tests, {read: false})
-               .pipe(mocha({
-                   reporter: 'nyan',
-                   require: ['chai']
-               }));
+var Server = require('karma').Server;
+gulp.task('test', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() { done(); }).start();
 });
 
-gulp.task('watch', function() {
+gulp.task('tdd', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js'
+    }, function() { done(); }).start();
+});
+
+gulp.task('build', ['sass', 'js', 'static', 'thirdPartyStatic']);
+
+gulp.task('build:watch', function() {
     gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.js, ['js', 'test']);
+    gulp.watch(paths.js, ['js']);
     gulp.watch(paths.static, ['static']);
     gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
-    gulp.watch(paths.tests, ['test']);
 });
 
 gulp.task('clean', function() {
     console.log('for now, do rm -rf www');
 });
-
-gulp.task('build', ['sass', 'js', 'static', 'thirdPartyStatic']);
 
 gulp.task('sass', function(done) {
     gulp.src('./src/scss/ionic.app.scss')
@@ -88,6 +105,14 @@ gulp.task('thirdPartyStatic', function(done) {
 
 gulp.task('cukes', function(done) {
     exec('cucumber', {cwd: './cukes/' }, function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        done();
+    });
+});
+
+gulp.task('cukes:focus', function(done) {
+    exec('cucumber --tags @focus', {cwd: './cukes/' }, function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         done();

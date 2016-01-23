@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "pouchdb": "~5.2.0",
-    "angular-pouchdb": "~4.1.0"
+    "angular-pouchdb": "~4.1.0",
+    "angular-mocks": "~1.4.9"
   }
 }

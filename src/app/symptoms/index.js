@@ -1,7 +1,7 @@
 angular.module('starter')
 
-.controller('SymptomsCtrl', function($scope, Symptoms) {
-    Symptoms.all().then(function(symptoms) {
+.controller('SymptomsCtrl', function($scope, symptomRepository) {
+    symptomRepository.all().then(function(symptoms) {
         $scope.symptoms = symptoms;
     });
 

@@ -1,5 +1,5 @@
 Feature: View list of symptoms
-    I want to view a list of my symptoms, 
+    I want to view a list of my symptoms,
     so that I can view my recent symptoms,
     As a Migraineur
 
@@ -8,7 +8,8 @@ Feature: View list of symptoms
         When I view my symptoms
         Then I should not see any symptoms
         And I should see text explaining the what and why of symptoms
-
+        
+    @focus
     Scenario: Multiple entries
         Given I have had the following symptoms:
             | Date     | Rating | Comments               |
@@ -25,4 +26,3 @@ Feature: View list of symptoms
             | Mild          | Jan 3, 2016 |
             | OK            | Jan 4, 2016 |
             | Great!        | Jan 5, 2016 |
-
