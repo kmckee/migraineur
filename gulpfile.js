@@ -20,6 +20,7 @@ gulp.task('default', ['build']);
 
 gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
+    gulp.watch(paths.js, ['js']);
     gulp.watch(paths.static, ['static']);
     gulp.watch(paths.thirdPartyStatic, ['thirdPartyStatic']);
 });
