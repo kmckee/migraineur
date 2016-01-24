@@ -7,6 +7,8 @@ class SymptomIndexPage
     div(:explanation, { id: 'explanation' })
 
     def symptoms
-        symptom_item_elements
+        symptom_item_elements.map do |elem|
+            { :description => elem.h2.text, :date => elem.p.text }
+        end
     end
 end

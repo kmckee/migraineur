@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :symptom do
-        _id 'symptom_' + UUID.new.generate
+        _id { 'symptom_' + UUID.new.generate }
         rating 3
         date Time.now
         comments "Sample comment"

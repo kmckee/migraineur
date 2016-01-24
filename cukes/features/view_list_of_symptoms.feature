@@ -8,7 +8,7 @@ Feature: View list of symptoms
         When I view my symptoms
         Then I should not see any symptoms
         And I should see text explaining the what and why of symptoms
-        
+
     @focus
     Scenario: Multiple entries
         Given I have had the following symptoms:
@@ -21,8 +21,8 @@ Feature: View list of symptoms
         When I view my symptoms
         Then I should see the following symptoms:
             | Description   | Date        |
-            | Debilitating  | Jan 1, 2016 |
-            | Severe        | Jan 2, 2016 |
-            | Mild          | Jan 3, 2016 |
-            | OK            | Jan 4, 2016 |
-            | Great!        | Jan 5, 2016 |
+            | Debilitating  | 1/1/2016 |
+            | Severe        | 1/2/2016 |
+            | Mild          | 1/3/2016 |
+            | OK            | 1/4/2016 |
+            | Great         | 1/5/2016 |

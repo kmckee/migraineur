@@ -20,7 +20,9 @@ module PouchDb
                                         "var db = new PouchDB('#{db_name}');" +
                                         "db.put(#{json});" +
                                     "})();"
+
             browser.execute_script(insert_object_script)
+            sleep 0.1 #Eventually, replace with testing dom to know when async is done.
         end
 
         def to_json

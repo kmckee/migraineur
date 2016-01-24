@@ -10,6 +10,8 @@ end
 
 When(/^I view my symptoms$/) do
     visit(SymptomIndexPage)
+    @browser.refresh
+    sleep 2
 end
 
 Then(/^I should not see any symptoms$/) do
