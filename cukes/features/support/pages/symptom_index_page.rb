@@ -8,7 +8,7 @@ class SymptomIndexPage
 
     def symptoms
         symptom_item_elements.map do |elem|
-            { :description => elem.h2.text, :date => elem.p.text }
+            { :description => elem.h2_element.text, :date => elem.paragraph_element.text }
         end
     end
 end
