@@ -20,13 +20,13 @@ var paths = {
     static: [
         './src/**/*.html',
         './src/**/*.css',
-        './src/**/*.{png,jpg}',
-        './src/**/*.ttf',
-        './src/**/*.woff'
+        './src/**/*.{png,jpg}'
     ],
     thirdPartyStatic: [
         './lib/**/*.js',
-        './lib/**/*.css'
+        './lib/**/*.css',
+        './lib/**/*.ttf',
+        './lib/**/*.woff'
     ]
 };
 
