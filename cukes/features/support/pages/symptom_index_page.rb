@@ -4,11 +4,15 @@ class SymptomIndexPage
     page_url(root_url + '/tabs/symptoms')
 
     elements(:symptom_item, { class: 'item' })
-    div(:explanation, { id: 'explanation' })
+    div(:explanation, { id: 'empty' })
 
     def symptoms
         symptom_item_elements.map do |elem|
             { :description => elem.h2_element.text, :date => elem.paragraph_element.text }
         end
+    end
+
+    def explanation_visible?
+        explanation_element.visible?
     end
 end
