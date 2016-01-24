@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var babel = require('gulp-babel');
 var exec = require('child_process').exec;
-var mocha = require('gulp-mocha');
+var Server = require('karma').Server;
 
 var paths = {
     sass: ['./src/**/*.scss'],
@@ -32,7 +32,6 @@ var paths = {
 
 gulp.task('default', ['build']);
 
-var Server = require('karma').Server;
 gulp.task('test', function (done) {
     new Server({
         configFile: __dirname + '/karma.conf.js',
@@ -138,3 +137,6 @@ gulp.task('install', ['git-check'], function() {
         gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
 });
+
+// Ugh, this sucks.  Something isn't closing a process so gulp hangs.
+gulp.on('stop', function() { process.exit(0); });

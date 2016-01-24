@@ -7,7 +7,12 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
     frameworks: ['mocha', 'chai'],
-    plugins: ['karma-mocha', 'karma-chai', 'karma-phantomjs-launcher'],
+    plugins: [
+        'karma-mocha',
+        'karma-chai',
+        'karma-phantomjs-launcher',
+        'karma-ng-html2js-preprocessor'
+    ],
 
     files: [
         './lib/ionic/js/ionic.bundle.min.js',
@@ -22,7 +27,7 @@ module.exports = function(config) {
 
     preprocessors: {
       'src/**/*.html': ['ng-html2js'],
-      //'src/**/!(*.mock|*.spec).js': ['coverage']
+      'src/**/!(*.mock|*.spec).js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {
@@ -34,10 +39,10 @@ module.exports = function(config) {
 
     reporters: ['progress'/*, 'coverage' */],
 
-    // coverageReporter: {
-    //   type : 'html',
-    //   dir : 'coverage/'
-    // },
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
     // web server port
     port: 9876,
