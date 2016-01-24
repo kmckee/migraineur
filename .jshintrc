@@ -1,0 +1,4 @@
+{
+    "expr": true,
+    "globals"       : {}        // additional predefined global variables
+}

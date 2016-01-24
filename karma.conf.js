@@ -6,12 +6,16 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai-sinon'],
     plugins: [
         'karma-mocha',
         'karma-chai',
         'karma-phantomjs-launcher',
-        'karma-ng-html2js-preprocessor'
+        'karma-ng-html2js-preprocessor',
+        'karma-coverage',
+        'karma-sinon',
+        'karma-chai-sinon'
+
     ],
 
     files: [
@@ -37,7 +41,7 @@ module.exports = function(config) {
       moduleName: 'templates'
     },
 
-    reporters: ['progress'/*, 'coverage' */],
+    reporters: ['progress', 'coverage'],
 
     coverageReporter: {
       type : 'html',

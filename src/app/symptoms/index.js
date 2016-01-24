@@ -8,6 +8,7 @@ angular.module('starter')
     $scope.remove = function(symptom) {
         // Symptoms.remove(symptom);
     };
+
     $scope.add = function() {
         // alert('todo!');
     };
