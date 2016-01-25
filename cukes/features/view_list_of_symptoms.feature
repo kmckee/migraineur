@@ -1,6 +1,6 @@
 Feature: View list of symptoms
     I want to view a list of my symptoms,
-    so that I can view my recent symptoms,
+    So that I can view my recent symptoms,
     As a Migraineur
 
     Scenario: No entries

@@ -1,6 +1,7 @@
+@ignore @not_implemented_yet
 Feature: Adding a new symptom
     I want to be able to capture a new symptom
-    so that I can share that data with my doctor and look for trends,
+    So that I can share that data with my doctor and look for trends,
     As a Chronic Migraineur
 
     Scenario: Adding a symptom I am currently experiencing
