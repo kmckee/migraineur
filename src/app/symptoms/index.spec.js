@@ -13,8 +13,8 @@ describe('SymptomsIndexCtrl', function() {
                 symptomRepository: symptomRepository
             });
         };
-
     }));
+
     it('gets all the symptoms', function() {
         sinon.stub(symptomRepository, 'all').returns($q.when());
         createController();

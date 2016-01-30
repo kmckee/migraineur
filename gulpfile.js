@@ -39,7 +39,7 @@ gulp.task('test', function (done) {
     }, function() { done(); }).start();
 });
 
-gulp.task('tdd', function (done) {
+gulp.task('test:watch', function (done) {
     new Server({
         configFile: __dirname + '/karma.conf.js'
     }, function() { done(); }).start();
@@ -139,4 +139,4 @@ gulp.task('install', ['git-check'], function() {
 });
 
 // Ugh, this sucks.  Something isn't closing a process so gulp hangs.
-gulp.on('stop', function() { process.exit(0); });
+//gulp.on('stop', function() { process.exit(0); });
