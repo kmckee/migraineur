@@ -5,6 +5,7 @@ class SymptomIndexPage
 
     elements(:symptom_item, { class: 'item' })
     div(:explanation, { id: 'empty' })
+    button(:add, { id: 'add' })
 
     def symptoms
         symptom_item_elements.map do |elem|

@@ -10,6 +10,6 @@ angular.module('starter')
     };
 
     $scope.add = function() {
-        // alert('todo!');
+        alert('todo!');
     };
 });

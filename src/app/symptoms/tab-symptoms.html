@@ -1,15 +1,18 @@
 <ion-view view-title="Symptoms">
+
+    <ion-nav-buttons side="primary">
+        <button id="add" class="button button-icon icon ion-plus" ng-click="add()"></button>
+    </ion-nav-buttons>
+
     <div id="empty" ng-if="symptoms.length === 0">
         <ion-content>
             <h2>No symptoms!</h2>
             <p>Must be nice.</p>
         </ion-content>
     </div>
-    <div id="data" ng-if="symptoms.length > 0">
-        <ion-nav-buttons side="right">
-            <button class="right button button-icon icon ion-plus" ng-click="add()"></button>
-        </ion-nav-buttons>
 
+
+    <div id="data" ng-if="symptoms.length > 0">
         <ion-content>
             <ion-list>
                 <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="symptom in symptoms" type="item-text-wrap" href="#/tab/symptoms/{{symptom.id}}">

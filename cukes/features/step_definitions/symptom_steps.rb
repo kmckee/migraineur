@@ -25,3 +25,9 @@ end
 Then(/^I should see the following symptoms:$/) do |expected_symptoms|
     expect(on(SymptomIndexPage).symptoms).to match_array(expected_symptoms.symbolic_hashes)
 end
+
+When(/^I add the following new symptom$/) do |symptom_table|
+    symptom = symptom_table.symbolic_hashes.first
+    on(SymptomIndexPage).add
+    on(SymptomAddPage).create(symptom)
+end
