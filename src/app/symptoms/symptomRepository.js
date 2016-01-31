@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.factory('symptomRepository', function(db, Symptom) {
+.factory('symptomRepository', function(db, Symptom, $q) {
     return {
         all: function() {
             return db.allDocs({
@@ -16,6 +16,11 @@ angular.module('starter')
         remove: function(symptom) {
         },
         get: function(symptomId) {
+        },
+        save: function(symptom) {
+            console.log('save:', symptom);
+            console.log('$q.when()', $q.when());
+            return $q.when();
         }
     };
 });

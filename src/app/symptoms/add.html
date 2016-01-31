@@ -1,4 +1,4 @@
-<ion-modal-view>
+<ion-modal-view ng-controller="AddSymptomCtrl">
     <ion-header-bar>
         <h1 class="title">Add a Symptom</h1>
     </ion-header-bar>
@@ -6,22 +6,24 @@
         <p class="rating-question">How do you feel?</p>
         <div class="ratings">
             <div class="row">
-                <div class="col">😭<br/>1</div>
-                <div class="col">😢<br/>2</div>
-                <div class="col selected-rating">🙁<br/>3</div>
-                <div class="col">😐<br/>4</div>
-                <div class="col">😀<br/>5</div>
+                <div class="col" id="rate_{{rating.val}}"
+                ng-repeat="rating in ratings"
+                ng-class="{'selected-rating': rating.val === model.rating}"
+                ng-click="selectRating(rating)">
+                {{rating.emoji}}<br/>{{rating.val}}
             </div>
         </div>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Comments:</span>
-                <textarea type="text" placeholder="Comments"></textarea>
-            </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Comments:</span>
+            <textarea
+            type="text"
+            placeholder="Comments"/>
+        </label>
         <div class="actions">
-            <button ng-click="addModal.hide()" class="button button-block button-positive">
+            <button ng-click="save()" class="button button-block button-positive">
                 Save
             </button>
-            <button ng-click="addModal.hide()" class="button button-block button-assertive">
+            <button ng-click="cancel()" class="button button-block button-assertive">
                 Cancel
             </button>
         </div>
