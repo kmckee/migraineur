@@ -11,7 +11,7 @@ var exec = require('child_process').exec;
 var Server = require('karma').Server;
 
 var paths = {
-    sass: ['./src/**/*.scss'],
+    sass: ['./src/**/*.scss', '!./src/ionic.app.scss'],
     js: [
         './src/**/*.js',
         '!./src/**/*.spec.js'
@@ -20,7 +20,9 @@ var paths = {
     static: [
         './src/**/*.html',
         './src/**/*.css',
-        './src/**/*.{png,jpg}'
+        './src/**/*.{png,jpg}',
+        './src/ionic.app.scss',
+        './src/ionic.app.min.scss'
     ],
     thirdPartyStatic: [
         './lib/**/*.js',
@@ -59,9 +61,10 @@ gulp.task('clean', function() {
 });
 
 gulp.task('sass', function(done) {
-    gulp.src('./src/scss/ionic.app.scss')
+    gulp.src(paths.sass)
     .pipe(sass())
     .on('error', sass.logError)
+    .pipe(concat('styles.css'))
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
         keepSpecialComments: 0

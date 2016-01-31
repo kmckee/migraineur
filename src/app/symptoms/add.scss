@@ -1,0 +1,20 @@
+.ratings {
+    text-align: center;
+    font-size: 3em;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.selected-rating {
+    position:relative;
+    -webkit-box-shadow: 0 6px 18px rgba(12, 96, 238, 0.6);
+    box-shadow: 0 6px 18px rgba(12, 96, 238, 0.6);
+    border-radius: 20px;
+}
+
+.rating-question {
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 30px;
+    padding-bottom: 15px;
+}
