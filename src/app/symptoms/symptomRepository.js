@@ -18,9 +18,7 @@ angular.module('starter')
         get: function(symptomId) {
         },
         save: function(symptom) {
-            console.log('save:', symptom);
-            console.log('$q.when()', $q.when());
-            return $q.when();
+            return db.put(new Symptom(symptom))
         }
     };
 });

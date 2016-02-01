@@ -1,13 +1,15 @@
 describe('Symptom', function() {
-    var Symptom, pojo;
+    var Symptom, pojo, rightNow;
     beforeEach(module('starter'));
     beforeEach(inject(function(_Symptom_) {
         Symptom = _Symptom_;
+        rightNow = new Date();
         pojo = {
             _id: '1234567',
             _rev: 'ASDFQWERTY',
             rating: 1,
-            date: '10/19/1983'
+            date: rightNow,
+            comments: 'foo'
         };
     }));
     it('has an _id', function() {
@@ -25,6 +27,22 @@ describe('Symptom', function() {
     it('has a date', function() {
         var result = new Symptom(pojo);
         expect(result.date).to.eql(pojo.date);
+    });
+    it('has comments', function() {
+        var result = new Symptom(pojo);
+        expect(result.comments).to.eql(pojo.comments);
+    });
+    it('assigns an _id if one does not exist', function() {
+        pojo._id = undefined;
+        var result = new Symptom(pojo);
+        expect(result._id).not.to.eql(undefined);
+        expect(result._id).to.startsWith('symptom_');
+    });
+
+    it('assigns right now if a date is not specified', function() {
+        pojo.date = undefined;
+        var result = new Symptom(pojo);
+        expect(result.date).not.to.eql(undefined);
     });
 
     describe('overview', function() {

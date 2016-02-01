@@ -1,6 +1,5 @@
 // Karma configuration
 // Generated on Sat Jan 23 2016 13:48:53 GMT-0500 (EST)
-
 module.exports = function(config) {
   config.set({
 
@@ -15,13 +14,13 @@ module.exports = function(config) {
         'karma-coverage',
         'karma-sinon',
         'karma-chai-sinon'
-
     ],
 
     files: [
         './lib/ionic/js/ionic.bundle.min.js',
         './lib/angular-mocks/angular-mocks.js',
         './lib/angular-pouchdb/angular-pouchdb.min.js',
+        './node_modules/chai-string/chai-string.js',
         './src/**/*.js',
         './src/**/*.html',
         './src/**/*.spec.js'

@@ -2,10 +2,12 @@ angular.module('starter')
 
 .factory('Symptom', function(symptomEmojiFor, symptomOverviewFor) {
     function Symptom(pojo) {
-        this._id = pojo._id;
-        this._rev = pojo._rev;
         this.rating = pojo.rating;
-        this.date = pojo.date;
+        this.comments = pojo.comments;
+        this.date = pojo.date || new Date();
+
+        this._id = pojo._id || 'symptom_' + this.date.getTime() ;
+        this._rev = pojo._rev;
     }
 
     Symptom.prototype.getEmoji = function () {
