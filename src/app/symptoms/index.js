@@ -4,7 +4,6 @@ angular.module('starter')
 
     $ionicModal.fromTemplateUrl('/app/symptoms/add.html', {scope: $scope, animation: 'slide-in-up'})
     .then(function(modal) {
-        console.log('modal:', modal);
         $scope.addModal = modal;
     });
 

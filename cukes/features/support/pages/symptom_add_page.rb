@@ -8,11 +8,11 @@ class SymptomAddPage
     textarea(:comments, {id: 'comments'})
     button(:cancel, {id: 'cancel'})
     button(:save_button, {id: 'save'})
+
     def save
         save_button
-        sleep 1
+        sleep 0.5
     end
-
 
     def rating= rating_int
         div_element({id: "rate-#{rating_int}"}).click

@@ -4,7 +4,6 @@ angular.module('starter')
     $scope.ratings = RATINGS;
     $scope.model = {rating: null, comments: ''};
     $scope.save = function() {
-        console.log('about to save', $scope.model);
         symptomRepository
             .save($scope.model)
             .then(function() { $scope.addModal.hide(); $scope.update(); })

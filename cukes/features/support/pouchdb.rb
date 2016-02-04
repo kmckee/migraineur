@@ -11,6 +11,17 @@ module PouchDb
         @@browser = browser
         @@db_name = db_name
     end
+    def self.destroy
+            db_name = PouchDb.db_name
+            browser = PouchDb.browser
+            destroy_db_script = "(function() { " +
+                                        "var db = new PouchDB('#{db_name}');" +
+                                        "db.destroy();" +
+                                    "})();"
+
+            browser.execute_script(destroy_db_script)
+            sleep 0.1 #Eventually, replace with testing dom to know when async is done.
+    end
     module Base
         def save!
             db_name = PouchDb.db_name

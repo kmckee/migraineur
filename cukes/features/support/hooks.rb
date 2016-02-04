@@ -6,7 +6,8 @@ Before do
     @browser = browser
     @browser.goto('http://localhost:8100')
     PouchDb::connect(@browser, 'migraineur_db')
-    # Clear the database!
+    PouchDb::destroy()
+    @browser.goto('http://localhost:8100')
 end
 
 at_exit do

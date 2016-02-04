@@ -12,16 +12,17 @@ Feature: View list of symptoms
     Scenario: Multiple entries
         Given I have had the following symptoms:
             | Date     | Rating | Comments               |
-            | 1/1/2016 | 1      | Terrible migraine      |
-            | 1/2/2016 | 2      | Pretty bad migraine    |
-            | 1/3/2016 | 3      | Mild migraine today    |
-            | 1/4/2016 | 4      | Felt OK today          |
-            | 1/5/2016 | 5      | Felt GREAT today!      |
+            | 1/1/2012 | 1      | Terrible migraine      |
+            | 1/2/2012 | 2      | Pretty bad migraine    |
+            | 1/3/2012 | 3      | Mild migraine today    |
+            | 1/4/2012 | 4      | Felt OK today          |
+            | 1/5/2012 | 5      | Felt GREAT today!      |
         When I view my symptoms
         Then I should see the following symptoms:
-            | Description   | Date      |
-            | Debilitating  | 1/1/2016  |
-            | Severe        | 1/2/2016  |
-            | Mild          | 1/3/2016  |
-            | OK            | 1/4/2016  |
-            | Great         | 1/5/2016  |
+            | Description   | Date        |
+            | Debilitating  | 4 years ago |
+            | Severe        | 4 years ago |
+            | Mild          | 4 years ago |
+            | OK            | 4 years ago |
+            | Great         | 4 years ago |
+# this will fail in 2017; yolo
