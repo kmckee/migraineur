@@ -15,5 +15,4 @@ angular.module('starter')
     $scope.selectRating = function(rating) {
         $scope.model.rating = rating.val;
     };
-
 });
