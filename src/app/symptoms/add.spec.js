@@ -5,6 +5,7 @@ describe('AddSymptomCtrl', function() {
     beforeEach(inject(function($controller, $rootScope, _RATINGS_, $q) {
         RATINGS = _RATINGS_;
         $scope = $rootScope.$new();
+        $scope.update = function(){}; // From parent scope.
         $scope.addModal = {hide: sinon.stub()};
         symptomRepository = {save: sinon.stub().returns($q.when())};
         createController = function() {

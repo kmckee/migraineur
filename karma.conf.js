@@ -17,9 +17,11 @@ module.exports = function(config) {
     ],
 
     files: [
-        './lib/ionic/js/ionic.bundle.min.js',
+        './lib/ionic/js/ionic.bundle.js',
         './lib/angular-mocks/angular-mocks.js',
         './lib/angular-pouchdb/angular-pouchdb.min.js',
+        './lib/moment/moment.js',
+        './lib/angular-moment/angular-moment.js',
         './node_modules/chai-string/chai-string.js',
         './src/**/*.js',
         './src/**/*.html',
