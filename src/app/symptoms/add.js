@@ -4,17 +4,17 @@ angular.module('starter')
     $scope.ratings = RATINGS;
     $scope.model = {rating: null, comments: ''};
     $scope.save = function() {
+        console.log('about to save', $scope.model);
         symptomRepository
             .save($scope.model)
-            .then(hideModal)
+            .then(function() { $scope.addModal.hide(); $scope.update(); })
             .catch(console.log);
     };
-    $scope.cancel = hideModal;
+    $scope.cancel = function() {
+        $scope.addModal.hide();
+    };
     $scope.selectRating = function(rating) {
         $scope.model.rating = rating.val;
     };
 
-    function hideModal() {
-        $scope.addModal.hide();
-    }
 });

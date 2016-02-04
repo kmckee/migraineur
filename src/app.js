@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts', 'analysis'])
+angular.module('starter', ['ionic', 'pouchdb', 'symptoms', 'settings', 'facts', 'analysis', 'angularMoment'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

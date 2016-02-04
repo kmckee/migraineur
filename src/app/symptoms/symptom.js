@@ -4,7 +4,7 @@ angular.module('starter')
     function Symptom(pojo) {
         this.rating = pojo.rating;
         this.comments = pojo.comments;
-        this.date = pojo.date || new Date();
+        this.date = pojo.date ? new Date(pojo.date) : new Date();
 
         this._id = pojo._id || 'symptom_' + this.date.getTime() ;
         this._rev = pojo._rev;

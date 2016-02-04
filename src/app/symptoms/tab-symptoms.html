@@ -15,10 +15,10 @@
     <div id="data" ng-if="symptoms.length > 0">
         <ion-content>
             <ion-list>
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="symptom in symptoms" type="item-text-wrap" href="#/tab/symptoms/{{symptom.id}}">
+                <ion-item class="symptom-item item-remove-animate item-avatar item-icon-right" ng-repeat="symptom in symptoms" type="item-text-wrap" href="#/tab/symptoms/{{symptom.id}}">
                     <div class="symptom-icon">{{ symptom.getEmoji() }}</div>
                     <h2 style="color: {{ symptom.color }}; font-weight: bold;">{{ symptom.getOverview() }}</h2>
-                    <p>{{ symptom.date | date }}</p>
+                    <span class="date" am-time-ago="symptom.date"></span>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-assertive" ng-click="remove(symptom)">
                         Delete

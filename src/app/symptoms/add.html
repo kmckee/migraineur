@@ -6,7 +6,7 @@
         <p class="rating-question">How do you feel?</p>
         <div class="ratings">
             <div class="row">
-                <div class="col" id="rate_{{rating.val}}"
+                <div class="col" id="rate-{{rating.val}}"
                 ng-repeat="rating in ratings"
                 ng-class="{'selected-rating': rating.val === model.rating}"
                 ng-click="selectRating(rating)">
@@ -16,14 +16,15 @@
         <label class="item item-input item-floating-label">
             <span class="input-label">Comments:</span>
             <textarea
-            type="text"
-            placeholder="Comments"/>
+                id="comments"
+                type="text"
+                placeholder="Comments"/>
         </label>
         <div class="actions">
-            <button ng-click="save()" class="button button-block button-positive">
+            <button id="save" ng-click="save()" class="button button-block button-positive">
                 Save
             </button>
-            <button ng-click="cancel()" class="button button-block button-assertive">
+            <button id="cancel" ng-click="cancel()" class="button button-block button-assertive">
                 Cancel
             </button>
         </div>

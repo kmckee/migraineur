@@ -12,8 +12,8 @@ Feature: Adding a new symptom
             | Rating | Comments      |
             | 1      | Feel so awful |
         Then I should see the following symptoms:
-            | Description   | Date      |
-            | Debilitating  | Today     |
+            | Description   | Date              |
+            | Debilitating  | a few seconds ago |
 
     Scenario: Adding a symptom I felt yesterday
         When I enter the following new symptom

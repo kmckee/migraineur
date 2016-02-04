@@ -81,13 +81,13 @@ gulp.task('js', function(done) {
     var ngAnnotate = require('gulp-ng-annotate');
 
     gulp.src(paths.js)
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-        presets: ['es2015']
-    }))
-    .pipe(ngAnnotate())
-    .pipe(uglify())
-    .pipe(concat('all.js'))
+    .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./www/'))
     .on('end', done);

@@ -18,7 +18,7 @@ angular.module('starter')
         get: function(symptomId) {
         },
         save: function(symptom) {
-            return db.put(new Symptom(symptom))
+            return db.put(new Symptom(symptom));
         }
     };
 });
