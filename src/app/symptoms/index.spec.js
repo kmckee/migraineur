@@ -7,7 +7,7 @@ describe('SymptomsIndexCtrl', function() {
         $rootScope = _$rootScope_;
         $ionicModal = _$ionicModal_;
         $scope = $rootScope.$new();
-        symptomRepository = { all: function() {} };
+        symptomRepository = { all: function() {}, remove: function() {} };
         createController = function() {
             return $controller('SymptomsCtrl', {
                 $scope: $scope,
@@ -38,5 +38,24 @@ describe('SymptomsIndexCtrl', function() {
         createController();
         $scope.$digest();
         expect($scope.addModal).to.eql(mockModal);
+    });
+
+    it('deletes symptoms from the db', function() {
+        var symptom = {};
+        sinon.stub(symptomRepository, 'all').returns($q.when([symptom]));
+        sinon.stub(symptomRepository, 'remove').returns($q.when());
+        createController();
+        $scope.remove(symptom);
+        expect(symptomRepository.remove).to.have.been.calledWith(symptom);
+    });
+
+    it('removes deleted symptoms from list on scope', function() {
+        var symptom = {};
+        sinon.stub(symptomRepository, 'all').returns($q.when([symptom]));
+        sinon.stub(symptomRepository, 'remove').returns($q.when());
+        createController();
+        $scope.remove(symptom);
+        $rootScope.$digest();
+        expect($scope.symptoms.length).to.eql(0);
     });
 });

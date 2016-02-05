@@ -10,7 +10,10 @@ angular.module('starter')
     $scope.remove = function(symptom) {
         symptomRepository
             .remove(symptom)
-            .then($scope.update)
+            .then(function() {
+                var symptoms = $scope.symptoms;
+                symptoms.splice(symptoms.indexOf(symptom), 1);
+            })
             .catch(console.log);
     };
 
