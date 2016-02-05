@@ -5,15 +5,14 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-    frameworks: ['mocha', 'chai-sinon'],
+    frameworks: ['jasmine', 'jasmine-matchers'],
     plugins: [
-        'karma-mocha',
-        'karma-chai',
         'karma-phantomjs-launcher',
+        'karma-chrome-launcher',
         'karma-ng-html2js-preprocessor',
         'karma-coverage',
-        'karma-sinon',
-        'karma-chai-sinon'
+        'karma-jasmine',
+        'karma-jasmine-matchers'
     ],
 
     files: [
@@ -22,7 +21,6 @@ module.exports = function(config) {
         './lib/angular-pouchdb/angular-pouchdb.min.js',
         './lib/moment/moment.js',
         './lib/angular-moment/angular-moment.js',
-        './node_modules/chai-string/chai-string.js',
         './src/**/*.js',
         './src/**/*.html',
         './src/**/*.spec.js'
@@ -64,7 +62,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

@@ -15,47 +15,47 @@ describe('SymptomsIndexCtrl', function() {
                 $ionicModal: $ionicModal
             });
         };
-        mockModal = {show: sinon.stub(), hide: sinon.stub()};
-        sinon.stub($ionicModal, 'fromTemplateUrl').returns($q.when(mockModal));
+        mockModal = {show: jasmine.createSpy(), hide: jasmine.createSpy()};
+        spyOn($ionicModal, 'fromTemplateUrl').and.returnValue($q.when(mockModal));
     }));
 
     it('gets all the symptoms', function() {
-        sinon.stub(symptomRepository, 'all').returns($q.when());
+        spyOn(symptomRepository, 'all').and.returnValue($q.when());
         createController();
-        expect(symptomRepository.all).to.have.been.called;
+        expect(symptomRepository.all).toHaveBeenCalled();
     });
 
     it('exposes symptoms on scope', function() {
         var expectedSymptoms = [];
-        sinon.stub(symptomRepository, 'all').returns($q.when(expectedSymptoms));
+        spyOn(symptomRepository, 'all').and.returnValue($q.when(expectedSymptoms));
         createController();
         $rootScope.$digest();
-        expect($scope.symptoms).to.eql(expectedSymptoms);
+        expect($scope.symptoms).toEqual(expectedSymptoms);
     });
 
     it('has a modal for adding symptoms', function() {
-        sinon.stub(symptomRepository, 'all').returns($q.when());
+        spyOn(symptomRepository, 'all').and.returnValue($q.when());
         createController();
         $scope.$digest();
-        expect($scope.addModal).to.eql(mockModal);
+        expect($scope.addModal).toEqual(mockModal);
     });
 
     it('deletes symptoms from the db', function() {
         var symptom = {};
-        sinon.stub(symptomRepository, 'all').returns($q.when([symptom]));
-        sinon.stub(symptomRepository, 'remove').returns($q.when());
+        spyOn(symptomRepository, 'all').and.returnValue($q.when([symptom]));
+        spyOn(symptomRepository, 'remove').and.returnValue($q.when());
         createController();
         $scope.remove(symptom);
-        expect(symptomRepository.remove).to.have.been.calledWith(symptom);
+        expect(symptomRepository.remove).toHaveBeenCalledWith(symptom);
     });
 
     it('removes deleted symptoms from list on scope', function() {
         var symptom = {};
-        sinon.stub(symptomRepository, 'all').returns($q.when([symptom]));
-        sinon.stub(symptomRepository, 'remove').returns($q.when());
+        spyOn(symptomRepository, 'all').and.returnValue($q.when([symptom]));
+        spyOn(symptomRepository, 'remove').and.returnValue($q.when());
         createController();
         $scope.remove(symptom);
         $rootScope.$digest();
-        expect($scope.symptoms.length).to.eql(0);
+        expect($scope.symptoms.length).toEqual(0);
     });
 });
