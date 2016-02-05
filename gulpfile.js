@@ -11,7 +11,7 @@ var exec = require('child_process').exec;
 var Server = require('karma').Server;
 
 var paths = {
-    sass: ['./src/**/*.scss', '!./src/ionic.app.scss'],
+    sass: ['./src/**/*.scss'],
     js: [
         './src/**/*.js',
         '!./src/**/*.spec.js'
