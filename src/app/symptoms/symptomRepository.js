@@ -14,6 +14,7 @@ angular.module('starter')
             });
         },
         remove: function(symptom) {
+            return db.remove(symptom);
         },
         get: function(symptomId) {
         },

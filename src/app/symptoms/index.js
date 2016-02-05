@@ -8,11 +8,14 @@ angular.module('starter')
     });
 
     $scope.remove = function(symptom) {
-        // Symptoms.remove(symptom);
+        symptomRepository
+            .remove(symptom)
+            .then($scope.update)
+            .catch(console.log);
     };
 
     $scope.update = function() {
-        symptomRepository.all().then(function(symptoms) {
+        return symptomRepository.all().then(function(symptoms) {
             $scope.symptoms = symptoms;
         });
     };
